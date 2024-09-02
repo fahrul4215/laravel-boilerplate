@@ -2,6 +2,7 @@
 
 namespace App\Providers;
 
+use Dotenv\Dotenv;
 use Illuminate\Support\ServiceProvider;
 
 class AppServiceProvider extends ServiceProvider
@@ -19,6 +20,11 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot(): void
     {
-        //
+        // Check if we are in the production environment
+        if (app()->environment('production')) {
+            // Load the .env.prod file
+            $dotenv = Dotenv::createImmutable(base_path(), '.env.prod');
+            $dotenv->load();
+        }
     }
 }
