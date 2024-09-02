@@ -1,8 +1,27 @@
 <?php
 
 namespace App\Http\Controllers;
+use App\Models\AppSetting;
+use Cache;
+use Config;
 
 abstract class Controller
 {
-    //
+    public function __construct()
+    {
+        $appSettings = Cache::rememberForever('app-settings', function () {
+            return AppSetting::first();
+        });
+
+        // config([
+        //     'app.store_name' => $appSettings->store_name,
+        //     'app.currency' => $appSettings->currency,
+        //     'app.wa_number' => $appSettings->wa_number
+        // ]);
+
+        Config::set('app.store_name', $appSettings->store_name);
+        Config::set('app.currency', $appSettings->currency);
+        Config::set('app.wa_number', $appSettings->wa_number);
+        Config::set('app.weight', $appSettings->weight);
+    }
 }

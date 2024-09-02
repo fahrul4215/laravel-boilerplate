@@ -27,6 +27,17 @@ class ProductComponent extends Component
     public $query = '';
     public $totalCount = 0;
 
+    // config
+    public $config_storeName, $config_currency, $config_waNumber, $config_weight;
+
+    public function mount()
+    {
+        $this->config_storeName = config('app.store_name');
+        $this->config_currency = config('app.currency');
+        $this->config_waNumber = config('app.wa_number');
+        $this->config_weight = config('app.weight');
+    }
+
     public function render()
     {
         $this->refreshData();

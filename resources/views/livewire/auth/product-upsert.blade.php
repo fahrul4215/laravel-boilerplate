@@ -1,10 +1,10 @@
-<div class="fixed z-10 inset-0 overflow-y-auto">
+<div class="fixed z-10 inset-0 overflow-y-auto m-auto">
     <div class="flex items-center justify-center min-h-screen">
         <div class="fixed inset-0 transition-opacity" aria-hidden="true">
             <div class="absolute inset-0 bg-gray-500 opacity-75"></div>
         </div>
 
-        <div class="bg-white rounded-lg overflow-hidden shadow-xl transform transition-all">
+        <div class="bg-white rounded-lg overflow-hidden shadow-xl transform transition-all max-w-4xl">
             <div class="bg-white p-4">
                 <h3 class="text-lg font-medium leading-6 text-gray-900">
                     {{ $p_id ? 'Edit' : 'Create' }} Product
@@ -50,7 +50,7 @@
                         </div>
                         <div class="">
                             <label for="price" class="block text-gray-700 text-sm font-bold mb-2">
-                                Price
+                                Price ({{ $config_currency }})
                             </label>
                             <input type="text" id="price" wire:model="price"
                                 class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline">
@@ -80,7 +80,7 @@
                         </div>
                         <div class="">
                             <label for="weight" class="block text-gray-700 text-sm font-bold mb-2">
-                                Weight
+                                Weight ({{ $config_weight }})
                             </label>
                             <input type="text" id="weight" wire:model="weight"
                                 class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline">

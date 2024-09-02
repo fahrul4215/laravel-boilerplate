@@ -37,7 +37,8 @@
                             <th class="py-2 px-4 bg-gray-200 font-bold uppercase text-sm text-gray-600">Price</th>
                             <th class="py-2 px-4 bg-gray-200 font-bold uppercase text-sm text-gray-600">Discount</th>
                             <th class="py-2 px-4 bg-gray-200 font-bold uppercase text-sm text-gray-600">Composition</th>
-                            <th class="py-2 px-4 bg-gray-200 font-bold uppercase text-sm text-gray-600">Weight</th>
+                            <th class="py-2 px-4 bg-gray-200 font-bold uppercase text-sm text-gray-600">Weight
+                                ({{ $config_weight }})</th>
                             <th class="py-2 px-4 bg-gray-200 font-bold uppercase text-sm text-gray-600">Images</th>
                             <th class="py-2 px-4 bg-gray-200 font-bold uppercase text-sm text-gray-600">Status</th>
                             <th class="py-2 px-4 bg-gray-200 font-bold uppercase text-sm text-gray-600">Action</th>
@@ -52,7 +53,7 @@
                                 <td class="py-2 px-4 border-b">{{ $value->name }}</td>
                                 {{-- <td class="py-2 px-4 border-b">{{ $value->slug }}</td> --}}
                                 <td class="py-2 px-4 border-b text-center">{{ $value->stock }}</td>
-                                <td class="py-2 px-4 border-b text-center">{{ $value->price }}</td>
+                                <td class="py-2 px-4 border-b text-center">{{ $config_currency . $value->price }}</td>
                                 <td class="py-2 px-4 border-b text-center">{{ $value->discount }} %</td>
                                 <td class="py-2 px-4 border-b">{{ $value->composition }}</td>
                                 <td class="py-2 px-4 border-b text-center">{{ $value->weight }}</td>

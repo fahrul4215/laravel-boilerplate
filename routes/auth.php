@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Auth\AppSettingsController;
 use App\Http\Controllers\Auth\CategoryProductController;
 use App\Http\Controllers\Auth\DashboardController;
 use App\Http\Controllers\Auth\ProductController;
@@ -42,4 +43,5 @@ Route::middleware('auth')->group(function () {
 
     Route::resource('category-product', CategoryProductController::class);
     Route::resource('product', ProductController::class);
+    Route::resource('app-settings', AppSettingsController::class);
 });
