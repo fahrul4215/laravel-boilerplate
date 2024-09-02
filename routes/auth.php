@@ -1,12 +1,17 @@
 <?php
 
+use App\Http\Controllers\Auth\CategoryProductController;
+use App\Http\Controllers\Auth\DashboardController;
+use App\Http\Controllers\Auth\ProductController;
 use App\Http\Controllers\Auth\VerifyEmailController;
+use App\Models\CategoryProduct;
 use Illuminate\Support\Facades\Route;
 use Livewire\Volt\Volt;
+use SebastianBergmann\CodeCoverage\Report\Html\Dashboard;
 
 Route::middleware('guest')->group(function () {
-    Volt::route('register', 'pages.auth.register')
-        ->name('register');
+    // Volt::route('register', 'pages.auth.register')
+    //     ->name('register');
 
     Volt::route('login', 'pages.auth.login')
         ->name('login');
@@ -28,4 +33,13 @@ Route::middleware('auth')->group(function () {
 
     Volt::route('confirm-password', 'pages.auth.confirm-password')
         ->name('password.confirm');
+
+    Route::get('dashboard', [DashboardController::class, 'index'])
+        ->name('dashboard');
+
+    Route::view('profile', 'auth.profile')
+        ->name('profile');
+
+    Route::resource('category-product', CategoryProductController::class);
+    Route::resource('product', ProductController::class);
 });
