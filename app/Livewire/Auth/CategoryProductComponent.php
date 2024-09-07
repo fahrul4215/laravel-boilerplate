@@ -7,13 +7,13 @@ use Livewire\Attributes\On;
 use Livewire\Component;
 use Livewire\WithoutUrlPagination;
 use Livewire\WithPagination;
+use Str;
 
 class CategoryProductComponent extends Component
 {
     use WithPagination, WithoutUrlPagination;
 
     protected $categoryProducts;
-    protected $paginationTheme = 'tailwind';
 
     public $p_id, $name;
     public $isModalOpen = false;
@@ -71,6 +71,7 @@ class CategoryProductComponent extends Component
 
         CategoryProduct::updateOrCreate(['id' => $this->p_id], [
             'name' => $this->name,
+            'slug' => Str::slug($this->name),
         ]);
 
         session()->flash('message', $this->p_id ? 'Category Product Updated Successfully.' : 'Category Product Created Successfully.');

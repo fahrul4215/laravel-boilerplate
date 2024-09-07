@@ -2,6 +2,10 @@
 @tailwind components;
 @tailwind utilities;
 
+a {
+    color: #dc9814;
+}
+
 .zoom-container {
     overflow: hidden;
     position: relative;

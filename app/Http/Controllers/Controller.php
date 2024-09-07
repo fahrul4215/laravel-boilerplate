@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 use App\Models\AppSetting;
 use Cache;
 use Config;
+use View;
 
 abstract class Controller
 {
@@ -19,5 +20,7 @@ abstract class Controller
             'app.wa_number' => $appSettings->wa_number ?? '',
             'app.weight' => $appSettings->weight ?? '',
         ]);
+
+        View::share('settings', $appSettings);
     }
 }

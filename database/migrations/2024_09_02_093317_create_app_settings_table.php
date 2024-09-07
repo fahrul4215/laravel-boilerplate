@@ -16,6 +16,8 @@ return new class extends Migration {
             $table->string('currency');
             $table->string('wa_number');
             $table->string('weight');
+            $table->string('instagram');
+            $table->string('facebook');
             $table->timestamps();
         });
     }

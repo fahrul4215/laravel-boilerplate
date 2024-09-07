@@ -5,6 +5,7 @@ namespace App\Livewire\Auth;
 use App\Models\CategoryProduct;
 use App\Models\Product;
 use App\Models\ProductImage;
+use Cache;
 use Livewire\Attributes\On;
 use Livewire\Component;
 use Livewire\WithFileUploads;
@@ -26,17 +27,6 @@ class ProductComponent extends Component
     public $isModalOpen = false;
     public $query = '';
     public $totalCount = 0;
-
-    // config
-    public $config_storeName, $config_currency, $config_waNumber, $config_weight;
-
-    public function mount()
-    {
-        $this->config_storeName = config('app.store_name');
-        $this->config_currency = config('app.currency');
-        $this->config_waNumber = config('app.wa_number');
-        $this->config_weight = config('app.weight');
-    }
 
     public function render()
     {
@@ -88,11 +78,11 @@ class ProductComponent extends Component
     private function resetInputFields()
     {
         $this->reset([
+            'p_id',
             'name',
             'stock',
-            'stock',
             'price',
-            'stock',
+            'discount',
             'composition',
             'weight',
             'status',
@@ -122,10 +112,10 @@ class ProductComponent extends Component
             ['id' => $this->p_id],
             [
                 'name' => $this->name,
-                'slug' => Str::slug($this->name) . '-' . uniqid($this->p_id, false),
+                'slug' => $this->p_id ? $this->slug : Str::slug($this->name) . '-' . uniqid($this->p_id, false),
                 'stock' => $this->stock,
                 'price' => $this->price,
-                'discount' => $this->stock,
+                'discount' => $this->discount,
                 'composition' => $this->composition,
                 'weight' => $this->weight,
                 'status' => $this->status,
@@ -133,6 +123,7 @@ class ProductComponent extends Component
                 'category_id' => $this->category_id
             ]
         );
+        Cache::flush();
 
         // Handle image uploads
         foreach ($this->images as $image) {
@@ -154,6 +145,7 @@ class ProductComponent extends Component
     {
         $product = Product::findOrFail($id);
         $this->p_id = $id;
+        $this->slug = $product->slug;
         $this->name = $product->name;
         $this->stock = $product->stock;
         $this->price = $product->price;

@@ -18,6 +18,8 @@ class AppSetting extends Model
         'store_name',
         'currency',
         'wa_number',
-        'weight'
+        'weight',
+        'instagram',
+        'facebook'
     ];
 }

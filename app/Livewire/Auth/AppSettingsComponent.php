@@ -12,7 +12,7 @@ class AppSettingsComponent extends Component
 
     public $paginationTheme = 'tailwind';
 
-    public $p_id, $store_name, $currency, $wa_number, $weight;
+    public $p_id, $store_name, $currency, $wa_number, $weight, $instagram, $facebook;
 
     public $isModalOpen = false;
     public $query = '';
@@ -27,6 +27,8 @@ class AppSettingsComponent extends Component
         $this->currency = $appSetting->currency ?? '';
         $this->wa_number = $appSetting->wa_number ?? '';
         $this->weight = $appSetting->weight ?? '';
+        $this->instagram = $appSetting->instagram ?? '';
+        $this->facebook = $appSetting->facebook ?? '';
     }
 
     public function render()
@@ -42,6 +44,8 @@ class AppSettingsComponent extends Component
             'currency' => ['required', 'string', 'max:255'],
             'wa_number' => ['required', 'string', 'max:255'],
             'weight' => ['required', 'string', 'max:255'],
+            'instagram' => ['required', 'string', 'max:255'],
+            'facebook' => ['required', 'string', 'max:255'],
         ]);
 
         $appSettings = AppSetting::updateOrCreate(

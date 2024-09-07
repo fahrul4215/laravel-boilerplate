@@ -50,7 +50,7 @@
                         </div>
                         <div class="">
                             <label for="price" class="block text-gray-700 text-sm font-bold mb-2">
-                                Price ({{ $config_currency }})
+                                Price ({{ config('app.currency', '$') }})
                             </label>
                             <input type="text" id="price" wire:model="price"
                                 class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline">
@@ -80,7 +80,7 @@
                         </div>
                         <div class="">
                             <label for="weight" class="block text-gray-700 text-sm font-bold mb-2">
-                                Weight ({{ $config_weight }})
+                                Weight ({{ config('app.weight', 'g') }})
                             </label>
                             <input type="text" id="weight" wire:model="weight"
                                 class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline">
@@ -112,8 +112,9 @@
                         </div>
                         <div class="col-span-2">
                             <div class="">
-                                <label for="images" class="block text-gray-700 text-sm font-bold mb-2">Product
-                                    Images</label>
+                                <label for="images" class="block text-gray-700 text-sm font-bold mb-2">
+                                    Product Images
+                                </label>
                                 <input type="file" id="images" wire:model="images" multiple
                                     class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
                                     accept="image/*">

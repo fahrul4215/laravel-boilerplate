@@ -6,10 +6,6 @@
             </div>
         @endif
         <div class="my-2 flex sm:flex-row flex-col space-x-1">
-            <button wire:click="create()"
-                class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded m-0.5">
-                ADD
-            </button>
             <form wire:submit="search" class="m-0.5">
                 <div class="block relative">
                     <span class="h-full absolute inset-y-0 left-0 flex items-center pl-2">
@@ -32,18 +28,12 @@
                     <thead>
                         <tr>
                             <th class="py-2 px-4 bg-gray-200 font-bold uppercase text-sm text-gray-600 w-10">No.</th>
-                            <th class="py-2 px-4 bg-gray-200 font-bold uppercase text-sm text-gray-600">Name</th>
-                            <th class="py-2 px-4 bg-gray-200 font-bold uppercase text-sm text-gray-600">Category</th>
-                            <th class="py-2 px-4 bg-gray-200 font-bold uppercase text-sm text-gray-600">Stock</th>
+                            <th class="py-2 px-4 bg-gray-200 font-bold uppercase text-sm text-gray-600">TRX Number</th>
+                            <th class="py-2 px-4 bg-gray-200 font-bold uppercase text-sm text-gray-600">Buyer Name</th>
+                            <th class="py-2 px-4 bg-gray-200 font-bold uppercase text-sm text-gray-600">Buyer WA</th>
                             <th class="py-2 px-4 bg-gray-200 font-bold uppercase text-sm text-gray-600">
-                                Price ({{ config('app.currency', '$') }})
+                                Buyer Address
                             </th>
-                            <th class="py-2 px-4 bg-gray-200 font-bold uppercase text-sm text-gray-600">Discount</th>
-                            <th class="py-2 px-4 bg-gray-200 font-bold uppercase text-sm text-gray-600">Composition</th>
-                            <th class="py-2 px-4 bg-gray-200 font-bold uppercase text-sm text-gray-600">
-                                Weight ({{ config('app.weight', 'g') }})
-                            </th>
-                            <th class="py-2 px-4 bg-gray-200 font-bold uppercase text-sm text-gray-600">Images</th>
                             <th class="py-2 px-4 bg-gray-200 font-bold uppercase text-sm text-gray-600">Status</th>
                             <th class="py-2 px-4 bg-gray-200 font-bold uppercase text-sm text-gray-600">Action</th>
                         </tr>
@@ -55,35 +45,16 @@
                                     {{ ($data->currentPage() - 1) * $data->perPage() + $loop->iteration }}
                                 </td>
                                 <td class="py-2 px-4 border-b">
-                                    {{ $value->name ?? '' }}
+                                    {{ $value->trx_number ?? '' }}
                                 </td>
                                 <td class="py-2 px-4 border-b">
-                                    {{ $value->category->name ?? '' }}
-                                </td>
-                                <td class="py-2 px-4 border-b text-center">
-                                    {{ $value->stock ?? 0 }}
-                                </td>
-                                <td class="py-2 px-4 border-b text-center">
-                                    {{ $value->price ?? 0 }}
-                                </td>
-                                <td class="py-2 px-4 border-b text-center">
-                                    {{ $value->discount ?? 0 }}%
+                                    {{ $value->buyer_name ?? '' }}
                                 </td>
                                 <td class="py-2 px-4 border-b">
-                                    {{ $value->composition ?? '' }}
+                                    {{ $value->buyer_wa ?? '' }}
                                 </td>
-                                <td class="py-2 px-4 border-b text-center">
-                                    {{ $value->weight ?? 0 }}
-                                </td>
-                                <td class="py-2 px-4 border-b text-center">
-                                    <div class="grid grid-cols-1 xl:grid-cols-2 gap-4">
-                                        @foreach ($value->images ?? [] as $image)
-                                            <a href="{{ Storage::url($image->path) }}" class="image-popup">
-                                                <img src="{{ Storage::url($image->path) }}"
-                                                    class="h-16 w-16 object-cover rounded">
-                                            </a>
-                                        @endforeach
-                                    </div>
+                                <td class="py-2 px-4 border-b">
+                                    {{ $value->buyer_address ?? '' }}
                                 </td>
                                 <td class="py-2 px-4 border-b text-center uppercase">
                                     @if ($value->status ?? 0 == 1)
@@ -99,14 +70,10 @@
                                     @endif
                                 </td>
                                 <td class="py-2 px-4 border-b text-center">
-                                    <button wire:click="edit({{ $value->id ?? '' }})"
+                                    {{-- <button wire:click="edit({{ $value->id ?? '' }})"
                                         class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-1 px-2 m-0.5 rounded w-20">
-                                        Edit
-                                    </button>
-                                    <button wire:click="delete({{ $value->id ?? '' }})"
-                                        class="bg-red-500 hover:bg-red-700 text-white font-bold py-1 px-2 m-0.5 rounded w-20">
-                                        Delete
-                                    </button>
+                                        Ubah Status
+                                    </button> --}}
                                 </td>
                             </tr>
                         @endforeach
@@ -118,10 +85,6 @@
                         {{ $data->links() }}
                     </div>
                 </div>
-
-                @if ($isModalOpen)
-                    @include('livewire.auth.product-upsert')
-                @endif
             </div>
         </div>
     </div>
