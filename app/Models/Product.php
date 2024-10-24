@@ -79,7 +79,7 @@ class Product extends Model
      */
     public function getUrlAttribute()
     {
-        return route('product', ['category' => $this->category->slug, 'slug' => $this->slug]);
+        return route('product', ['category' => $this->category->slug ?? '', 'slug' => $this->slug ?? '']);
     }
 
     public function getDiscountedPriceAttribute()

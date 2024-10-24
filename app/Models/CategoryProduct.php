@@ -21,6 +21,23 @@ class CategoryProduct extends Model
 
     public function products()
     {
-        return $this->hasMany(Product::class);
+        return $this->hasMany(Product::class, 'category_id');
+    }
+
+    /**
+     * The accessors to append to the model's array form.
+     *
+     * @var array
+     */
+    protected $appends = ['url'];
+
+    /**
+     * Get the url
+     *
+     * @return string
+     */
+    public function getUrlAttribute()
+    {
+        return route('category', ['category' => $this->slug ?? '']);
     }
 }

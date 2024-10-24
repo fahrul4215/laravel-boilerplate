@@ -48,7 +48,7 @@ class CheckOutController extends Controller
     Harga Satuan: ' . config('app.currency', '$') . ' ' . number_format($value['price'], 0, ',', '.') . '
     Diskon: ' . $value['discount'] . '%25
     Harga Satuan setelah Diskon: ' . config('app.currency', '$') . ' ' . number_format($value['discounted_price'], 0, ',', '.') . '
-    Harga Total: ' . config('app.currency', '$') . ' *' . number_format(($value['quantity'] * $value['discounted_price']), 0, ',', '.') . '*
+    Harga Total: ' . config('app.currency', '$') . ' *' . number_format($value['quantity'] * $value['discounted_price'], 0, ',', '.') . '*
 
 ';
                     $p = Product::find($value['product_id']);

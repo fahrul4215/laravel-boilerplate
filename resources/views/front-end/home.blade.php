@@ -1,14 +1,14 @@
 <x-front-end-layout>
     <div class="swiper hero-swiper container mx-auto w-full h-96">
         <div class="swiper-wrapper">
-            <div class="swiper-slide relative bg-cover bg-center"
-                style="background-image: url('{{ Storage::url($headline[0]->images[0]->path ?? '') }}');">
-                {{-- <div class="absolute inset-0 bg-black bg-opacity-50 flex items-center justify-center">
-                </div> --}}
-            </div>
+            {{-- <div class="swiper-slide relative bg-cover bg-center"
+                style="background-image: url('{{ Storage::url($headline[0]->products[0]->images[0]->path ?? '') }}');">
+                <div class="absolute inset-0 bg-black bg-opacity-50 flex items-center justify-center">
+                </div>
+            </div> --}}
             @foreach ($headline as $item)
                 <div class="swiper-slide relative bg-cover bg-center"
-                    style="background-image: url('{{ Storage::url($item->images[0]->path ?? '') }}');">
+                    style="background-image: url('{{ Storage::url($item->products[0]->images[0]->path ?? '') }}');">
                     <div class="absolute inset-0 bg-black bg-opacity-50 flex items-center justify-center">
                         <div class="container mx-auto">
                             <div
@@ -65,7 +65,7 @@
                 <div class="w-full container mx-auto flex flex-wrap items-center justify-between mt-0 px-2 py-3">
 
                     <a class="uppercase tracking-wide no-underline hover:no-underline font-bold text-gray-800 text-xl "
-                        href="#">
+                        href="{{ route('shop') }}">
                         Products
                     </a>
 
