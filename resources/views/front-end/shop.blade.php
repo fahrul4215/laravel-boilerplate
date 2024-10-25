@@ -5,13 +5,9 @@
         </h2>
     </x-slot>
 
-    <div class="py-12 w-full">
-        <div class="w-full mx-auto sm:px-6 lg:px-8 space-y-6">
-            <div class="bg-white dark:bg-gray-800 shadow sm:rounded-lg">
-                <div class="w-full">
-                    <livewire:front-end.shop-component @cartUpdated="$refresh" />
-                </div>
-            </div>
+    <div class="py-12">
+        <div class="bg-white container mx-auto flex items-center flex-wrap pt-4 pb-12">
+            <livewire:front-end.shop-component @cartUpdated="$refresh" />
         </div>
     </div>
 </x-front-end-layout>
