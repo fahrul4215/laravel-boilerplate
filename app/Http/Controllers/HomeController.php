@@ -15,11 +15,12 @@ class HomeController extends Controller
 
         // cache 12 hours
         $data["headline"] = Cache::remember('home_headline', config('cache.default'), function () {
-            return CategoryProduct::with([
-                'products' => function ($query) {
-                    $query->with(['images'])->limit(1);
-                }
-            ])->get();
+            return CategoryProduct::has('products')
+                ->with([
+                    'products' => function ($query) {
+                        $query->with(['images'])->limit(1);
+                    }
+                ])->get();
         });
 
         $data['products'] = Product::active()->onStock()->take(12)->get();

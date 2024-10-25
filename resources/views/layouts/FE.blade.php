@@ -77,7 +77,7 @@
 
 </head>
 
-<body class="bg-white text-gray-600 work-sans leading-normal text-base tracking-normal">
+<body class="bg-gray-100 text-gray-600 work-sans leading-normal text-base tracking-normal">
 
     <!--Nav-->
     <nav id="header" class="w-full z-30 top-0 py-1">

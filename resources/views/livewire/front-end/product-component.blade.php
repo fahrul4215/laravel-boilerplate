@@ -4,8 +4,8 @@
         <div class="nm-page-wrap-inner">
             <div class="woocommerce-notices-wrapper"></div>
             <div id="product-246"
-                class="nm-single-product layout-default gallery-col-7 summary-col-5 thumbnails-vertical has-bg-color meta-layout-default tabs-layout-default product type-product post-246 status-publish first instock product_cat-decoration product_tag-decor product_tag-interior has-post-thumbnail shipping-taxable purchasable product-type-simple">
-                <div class="nm-single-product-bg clear">
+                class="layout-default gallery-col-7 summary-col-5 thumbnails-vertical has-bg-color meta-layout-default tabs-layout-default product type-product post-246 status-publish first instock product_cat-decoration product_tag-decor product_tag-interior has-post-thumbnail shipping-taxable purchasable product-type-simple">
+                <div class="clear">
 
                     <div id="nm-shop-notices-wrap"></div>
                     <div class="nm-single-product-showcase">
